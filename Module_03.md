@@ -24,9 +24,15 @@ OQEkbOWAogF0Ed53rsoVVQoW+HVFVqdUlQ0boiQBdec9lKKDB8DbAEfdCC45zVjG
 -----END CERTIFICATE-----
 ```
 
-Let take the above data and put in a file named redditcert
+Let's take the above data and put in a file named redditcert
 
-The importance of flag `text`. I have used this `-text`flag several times but never understood what it means. It means "please give me the information in human readable format". But if you run below command, the output would be same as above.
+### The importance of flag `text`. 
+
+I have used this `-text`flag several times but never understood what it means. It means 
+> "please give me the information in human readable format". 
+
+
+But if you run below command, the output would be same as above.
 
 ```bash
 openssl x509 -in redditcert
@@ -38,7 +44,7 @@ Here you will get same information as was in redditcert. But to make it human re
 openssl x509 -in redditcert -text -noout
 ```
 
-You might ask, what is this `-noout` flag. Well this flag tells, please do not send the output in base64 format. And `-text` , we are telling to send the output in human readable format.
+You might ask, what is this `-noout` flag. Well this flag tells, please do not send the output in base64 format. And with `-text` (to repeat) , we are telling to send the output in human readable format.
 
 ### What is inside CSR?
 
@@ -50,11 +56,11 @@ CSR includes the following three parts
 
 #### Note:
 
-It is server who creates CSR. That means, key is created by the server.
+It is server who creates CSR. That means, key is created by and possible the server.
 
 ### File Formats
 
-when file is streams on wire it is 1 and 0. So when you transfer certificates on wire it use DER.
+When file is streamed on the wire it is 1 and 0. So when you transfer certificates on wire it use DER.
 DER stands for Distinguished Encoding Rules
 
 #### PEM
@@ -70,8 +76,8 @@ It is basically pem formatted file. This does not mean, it will have `pem` exten
 1. PFX     = Public Information Exchange (originally developed by microsoft in 1996)
 2. PKCS    = Public Key Cryptography Standard #12
 
-Since file names are of 3 characters, it is used as `.pfx`. PFX as a file format is no longer used.
-It can contain, one certificate and matching key.  Also potentially a certificate chain.
+Since file names are of 3 characters, pkcs12 is also uses `.pfx` as file extension. PFX as a file format is no longer used.
+The file can contain, one certificate and matching key.  Also potentially a certificate chain as well.
 These are binary file (human non-readable) and contain following three file extensions
 
 1. `.pfx`
@@ -80,7 +86,7 @@ These are binary file (human non-readable) and contain following three file exte
 
 #### pkcs7
 
-1. popular. It contains certificate. No keys. but key is part of certificate. It can also contain certificate chain
+1. Popular. It contains certificate. No keys. But as we know key is part of certificate. It can also contain certificate chain
 2. file starts with `-----BEGIN pkcs7-----`
 3. Typically not used for SSL and TLS
 4. Was used for SMIME
